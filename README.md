@@ -5,7 +5,7 @@ Dataset consists of 40 cases of scans. Each case has 400~600 slices.
 ## preprocess  
 
 To do the preprocessing, prepare a dicom dataset first. The dataset need to be named from 0 to [num of cases]. And for each case, there has to be 2 folders of high dose and low dose.
-Then run preprocess.py . This would create a folder of h5py files and another folder of png files.
+Then run `preprocess.py` . This would create a folder of h5py files and another folder of png files.
 Following command like this:
   
 
@@ -15,7 +15,7 @@ This would create a png file folder and a h5py file folder in the foleder name "
   
 ## training
   
-To do the training, run main.py like this
+To do the training, run `main.py` like this
   
 
     CUDA_VISIBLE_DEVICES=1 python l2h/main5_config.py $@ --n_epochs=25 --lr_d=.005 --lr_g=.005 --label="debug" --train_D="True" --twiceG="False" --lamda=0.05 --lamda2=0.05 \
