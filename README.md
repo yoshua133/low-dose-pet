@@ -18,5 +18,5 @@ This would create a png file folder and a h5py file folder in the foleder name "
 To do the training, run `main.py` like this
   
 
-    CUDA_VISIBLE_DEVICES=1 python l2h/main5_config.py $@ --n_epochs=25 --lr_d=.005 --lr_g=.005 --label="debug" --train_D="True" --twiceG="False" --lamda=0.05 --lamda2=0.05 \
+    CUDA_VISIBLE_DEVICES=1 python l2h/main.py $@ --n_epochs=25 --lr_d=.005 --lr_g=.005 --label="debug" --train_D="True" --twiceG="False" --lamda=0.05 --lamda2=0.05 \
     --activation="tanh" --loss="l2" --pool="True" --num_slice=3 --batch_size=32 --csv_path="/home/dxiang/unzipped_6.25_100_low_val_cases/csv.csv"
