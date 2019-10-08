@@ -24,6 +24,17 @@ parser.add_argument("--high_val", type=str)
 parser.add_argument("--low_val", type=str)
 parser.add_argument("--slice_range", type=int,default=2)
 
+#parameters:
+#h5_path_new: the path to save generated h5py files
+#png_path_new: the path to save generated png files
+#dicom_path_old :the path of original dicom path
+#num_case: number of cases to user
+#high_val: high dose value, example "100" or "75"
+#low_val: low dose value, example "6.25" or "50"
+#slice_range : how many slices you want to use as the input, add 1 slice range means you add more 2 slices(one above&one below) to the input 
+
+
+
 config = parser.parse_args()
 NEW_ROOT=config.h5_path_new
 NEW_ROOT2=config.png_path_new
@@ -138,42 +149,6 @@ def convert_dicom_to_hdf5_h(path,case_num):
     print(e)
 
 
-
-"""
-def write_csv(data_path, new_paths):
-  pairs = set()
-  no_pair=set()
-  for path in new_paths:
-    if 'h.png' in path:
-      pair_path = path.replace('h.png','l.png')
-      is_high=True
-    elif 'l.png' in path:
-      pair_path = path.replace('l.png','h.png')
-      is_high=False
-    else:
-      raise Exception("Bad endings")
-
-    if pair_path in new_paths:
-      if is_high:
-        path, pair_path = pair_path, path
-      pair = (path, pair_path)
-      if pair not in pairs:
-        pairs.add(pair)
-    else:
-      no_pair.add(path)
-      print(f'no pair for {path} at {pair_path}')
-  print(len(pairs),len(no_pair))
-
-  with open(OUTPUT_CSV, 'w') as out_file:
-    csv_writer = csv.DictWriter(out_file, fieldnames=['low_path', 'high_path'])
-    csv_writer.writeheader()
-    for pair in pairs:
-      row = {}
-      row['low_path'], row['high_path'] = pair
-      csv_writer.writerow(row)
-  print('CSV written!')
-
-"""
 def write_csv(data_path, new_paths_low,new_paths_high):
   pairs = []
   no_pair=[]
@@ -214,33 +189,6 @@ def write_csv(data_path, new_paths_low,new_paths_high):
       csv_writer.writerow(row)
   print('CSV written!') 
     
-  """  
-    elif 'l.hdf5' in path:
-      pair_path = path.replace('l.hdf5','h.hdf5')
-      is_high=False
-    else:
-      raise Exception("Bad endings")
-
-    if pair_path in new_paths:
-      if is_high:
-        path, pair_path = pair_path, path
-      pair = (path, pair_path)
-      if pair not in pairs:
-        pairs.add(pair)
-    else:
-      no_pair.add(path)
-      print(f'no pair for {path} at {pair_path}')
-  print(len(pairs),len(no_pair))
-
-  with open(OUTPUT_CSV, 'w') as out_file:
-    csv_writer = csv.DictWriter(out_file, fieldnames=['low_path', 'high_path'])
-    csv_writer.writeheader()
-    for pair in pairs:
-      row = {}
-      row['low_path'], row['high_path'] = pair
-      csv_writer.writerow(row)
-  print('CSV written!')
-"""
 
 def main():
   new_paths_low = set()
