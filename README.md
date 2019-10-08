@@ -2,8 +2,8 @@
 This for generating 100% dose PET images based on low dose images.
 Dataset consists of 40 cases of scans. Each case has 400~600 slices.
 
-##preprocess
-  
+## preprocess  
+
 To do the preprocessing, prepare a dicom dataset first. The dataset need to be named from 0 to [num of cases]. And for each case, there has to be 2 folders of high dose and low dose.
 Then run preprocess.py . This would create a folder of h5py files and another folder of png files.
 Following command like this:
@@ -13,7 +13,7 @@ Following command like this:
     
 This would create a png file folder and a h5py file folder in the foleder name "png_path_new" and "h5_path_new", meanwhile doing the normalization on each image.
   
-##training
+## training
   
 To do the training, run main.py like this
   
